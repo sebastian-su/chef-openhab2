@@ -1,0 +1,18 @@
+rvm: 2.2
+
+sudo: required
+services: docker
+
+env:
+  matrix:
+  - INSTANCE=default-debian-9
+  - INSTANCE=default-ubuntu-16.04
+
+before_install: curl -L https://www.getchef.com/chef/install.sh | sudo bash -s -- -P chefdk -v 0.18.30
+
+install: chef exec bundle install
+
+before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
+
+script:
+- chef exec bundle exec kitchen verify ${INSTANCE}

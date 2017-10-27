@@ -1,0 +1,38 @@
+---
+driver:
+  name: dokken
+  chef_version: latest
+  privileged: true
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: debian-9
+    driver:
+      image: dokken/debian-9
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: ubuntu-16.04
+    driver:
+      image: dokken/ubuntu-16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN apt-get update
+
+suites:
+  - name: default
+    run_list:
+      - recipe[openhab2::default]
+    verifier:
+      inspec_tests:
+        - test/recipes
+    attributes:
