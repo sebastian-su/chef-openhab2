@@ -17,16 +17,7 @@ end
 
 describe port(8080) do
   before do
-    60.times do
-      if system("netstat -ntl | grep :8080 ")
-        puts "openhab2 service is up"
-        return 0
-      else
-        sleep(1)
-        puts "still waiting for service..."
-        next
-      end
-    end
+    sleep(30)
   end
   it{ should be_listening }
 end

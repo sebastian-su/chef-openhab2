@@ -4,8 +4,9 @@
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
 
+include_recipe "java"
+
 package 'apt-transport-https'
-package 'default-jre'
 
 apt_repository 'openhab2' do
     uri             "https://dl.bintray.com/openhab/apt-repo2"
