@@ -17,4 +17,5 @@ install: chef exec bundle install
 before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
 
 script:
-- chef exec bundle exec kitchen verify ${INSTANCE}
+  - chef exec rspec
+  - chef exec bundle exec kitchen verify ${INSTANCE}
