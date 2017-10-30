@@ -21,5 +21,4 @@ describe 'openhab2::default' do
       expect(chef_run).to start_service('openhab2')
     end
   end
-
 end

@@ -19,5 +19,5 @@ describe port(8080) do
   before do
     sleep(30)
   end
-  it{ should be_listening }
+  it { should be_listening }
 end
