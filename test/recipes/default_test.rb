@@ -15,6 +15,14 @@ describe service('openhab2') do
   it { should be_running }
 end
 
+describe file('/usr/local/bin/openhab2_backup') do
+  it { should exist }
+end
+
+describe crontab do
+  its('commands') { should include '/usr/local/bin/openhab2_backup' }
+end
+
 describe port(8080) do
   before do
     sleep(30)

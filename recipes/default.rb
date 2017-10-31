@@ -4,6 +4,8 @@
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
 
+include_recipe 'openhab2::backup' if node['openhab2']['backup'] == true
+
 include_recipe 'java'
 
 package 'apt-transport-https'
@@ -17,7 +19,6 @@ end
 
 package 'openhab2' do
   action :install
-  options '--force-yes'
 end
 
 service 'openhab2' do

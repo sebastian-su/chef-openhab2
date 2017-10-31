@@ -6,4 +6,3 @@ CHEF cookbook for deploying OpenHAB2
 
 TODO:
 * add items via CHEF
-* add backup

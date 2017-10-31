@@ -1,0 +1,11 @@
+# stop openhab instance (here: systemd service)
+sudo systemctl stop openhab2.service
+
+# backup current installation with settings
+TIMESTAMP=`date +%Y%m%d_%H%M%S`;
+mkdir <%= @backup_destination %>$TIMESTAMP
+cp -arv /etc/openhab2 <%= @backup_destination %>$TIMESTAMP/conf
+cp -arv /var/lib/openhab2 <%= @backup_destination %>$TIMESTAMP/userdata
+
+# restart openhab instance
+sudo systemctl start openhab2.service
